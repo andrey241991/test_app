@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from './components/Header';
 import SideBar from './components/SideBar';
+import OfficesPage from './components/OfficesPage';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Header />
       <div className="app-wrapper">
         <SideBar/>
+        <OfficesPage/>
       </div>
     </div>
   );

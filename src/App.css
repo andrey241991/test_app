@@ -1,9 +1,12 @@
-.app{
+.app {
   max-width: 1366px;
   margin: 0 auto;
   background-color: #f7f8fa;
 }
 
-.app-wrapper{
+.app-wrapper {
   padding: 24px;
+  display: flex;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+  border: solid 1px #eaeaea;
 }
