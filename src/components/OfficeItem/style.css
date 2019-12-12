@@ -1,0 +1,81 @@
+.office-item {
+  min-height: 120px;
+  border-radius: 2px;
+  border: solid 1px #d7dce2;
+  background-color: #ffffff;
+  margin-top: 16px;
+}
+
+.office-item .office-item-container {
+  padding: 12px 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.office-item .adress-container {
+  display: flex;
+}
+
+.office-item .adress-container .adress-container__title {
+  font-family: OpenSans;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  text-align: right;
+  color: #53687e;
+  padding-right: 17px;
+}
+
+.office-item .adress-container .adress-container__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.office-item .adress-container .adress-container__item span {
+  font-family: OpenSans;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #334152;
+}
+
+.office-item .contacts-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.office-item .contacts-container .contacts-container__name {
+  width: 49px;
+  text-align: right;
+  padding-right: 15px;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  font-family: OpenSans;
+  letter-spacing: 0.4px;
+  text-align: right;
+  color: #53687e;
+}
+
+.office-item .contacts-container span {
+  font-family: OpenSans;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #334152;
+}
+
+.office-item .buttons-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 162px;
+}

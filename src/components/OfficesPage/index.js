@@ -1,6 +1,8 @@
 import React from 'react';
 import './style.css';
 import Button from '../Button';
+import OfficeList from '../OfficeList';
+import OfficeItem from '../OfficeItem';
 
 const OfficesPage = () => {
     return <section className='offices'>
@@ -13,8 +15,9 @@ const OfficesPage = () => {
                 <h3 className='offices-header__sub-title'>Updating your location and contact information helps you appeal to regional investors and service providers.</h3>
             </div>
             <div className='offices-page-main'>
-                <Button onClickCallBack={()=> alert('HY man')}>Add New Office</Button>
-
+                <Button onClickCallBack={() => alert('HY man')}>Add New Office</Button>
+                <OfficeList />
+                <OfficeItem />
             </div>
             <div className='offices-page-footer'>
 

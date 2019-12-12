@@ -10,7 +10,6 @@
   border-radius: 2px;
   border: solid 1px #d6d6d6;
   background: white;
-  /* max-height: 32px; */
 }
 
 .button__continue-theme{
@@ -32,5 +31,4 @@
   background: #2888d1;
   color: #ffffff;
   padding: 5px 16px;
-
 }
