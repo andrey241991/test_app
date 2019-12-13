@@ -10,7 +10,7 @@ import Button from '../Button';
 
 // }
 
-const OfficeItem = ({ adress, phone, email, fax }) => {
+const OfficeItem = ({ adress, phone, email, fax, id, removeOffice, editOffice }) => {
 
   return (
     <section className='office-item'>
@@ -50,8 +50,8 @@ const OfficeItem = ({ adress, phone, email, fax }) => {
           }
         </div>
         <div className='buttons-container'>
-          <Button theme='button__remove-theme'>Remove</Button>
-          <Button theme='button__edit-theme'>Edit</Button>
+          <Button theme='button__remove-theme' onClickCallBack={()=> removeOffice(id)}>Remove</Button>
+          <Button theme='button__edit-theme' onClickCallBack={()=> editOffice(id)}>Edit</Button>
         </div>
       </div>
     </section>

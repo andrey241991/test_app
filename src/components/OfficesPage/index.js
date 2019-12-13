@@ -1,8 +1,7 @@
 import React from 'react';
 import './style.css';
 import Button from '../Button';
-import OfficeList from '../OfficeList';
-import OfficeItem from '../OfficeItem';
+import OfficeListContainer from '../OfficeListContainer';
 
 const OfficesPage = () => {
     return <section className='offices'>
@@ -16,8 +15,7 @@ const OfficesPage = () => {
             </div>
             <div className='offices-page-main'>
                 <Button onClickCallBack={() => alert('HY man')}>Add New Office</Button>
-                <OfficeList />
-                <OfficeItem />
+                <OfficeListContainer />
             </div>
             <div className='offices-page-footer'>
 
