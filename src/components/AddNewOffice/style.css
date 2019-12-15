@@ -2,9 +2,8 @@
   min-height: 281px;
   border-radius: 2px;
   border: solid 1px #d7dce2;
-  background-color: #ffffff;
   margin-top: 18px;
-  width: 974px;
+  background: #ffffff;
 }
 
 .add-new-office-container {
@@ -55,10 +54,35 @@
   width: 162px;
 }
 
-.country-wrapper{
+.country-wrapper {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.country-wrapper .country__logo {
+  width: 113px;
+  height: 16px;
+  font-family: OpenSans;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  text-align: right;
+  color: #53687e;
+}
+
+.country-wrapper .country__select {
+  width: 191px;
+  min-height: 32px;
+  box-sizing: border-box;
+  margin-left: 10px;
+}
+
+.add-new-office--visible {
   display: flex;
 }
 
-.country__logo{
-
+.add-new-office--hidden {
+  display: none;
 }

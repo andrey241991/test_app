@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
 
-const ValidationInput = ({ inpuType, logo, children }) => {
+const Input = ({ inputType, logo, children, handleInput, value, fieldName}) => {
 
     // const checkField = e => {
     //     let inputText = e.target.value;
@@ -13,14 +13,36 @@ const ValidationInput = ({ inpuType, logo, children }) => {
     //     }
     // }
 
+    // const onHandleInput = (e) => {
+    //     debugger;
+    //     // if(logo === 'Office Type'){
+    //     //     handleInput(logo, e.);
+    //     // }
+    //     console.log('stateName', stateName);
+    //     console.log('e.target.value', e.target.value);
+    //     handleInput(stateName, e.target.value);
+    // }
+
+    // {const log2o = {logo == 'Office Type' ? :  }}
+
+
+    const onHandleInput = (e) => {
+        handleInput(fieldName, e.target.value);
+    }
+
     return (
         <section className='input'>
             <span className='input__title'>{logo}</span>
-            <input className='input__field' type={inpuType} onChange={() => { }} />
+            <input
+                className='input__field'
+                // checked = {logo === 'Office Type' ? value : undefined}
+                value={value}
+                type={inputType}
+                onChange={onHandleInput} />
             {children}
         </section>
 
     );
 }
 
-export default ValidationInput;
+export default Input;

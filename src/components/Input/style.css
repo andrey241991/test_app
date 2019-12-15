@@ -1,14 +1,30 @@
 .input{
     display: flex;
+    align-items: center;
+    margin-bottom: 8px;
 }
 
 .input__title{
-
+    width: 113px;
+    height: 16px;
+    font-family: OpenSans;
+    font-size: 14px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    letter-spacing: 0.4px;
+    text-align: right;
+    color: #53687e;
 }
 
 .input__field{
-
+    width: 191px;
+    min-height: 32px;
+    box-sizing: border-box;
+    margin-left: 10px;
 }
+
+
 
 .error__field {
     display: none;
@@ -17,4 +33,5 @@
     font-size: 14px;
     font-weight: 400;
     color: red;
+
 }

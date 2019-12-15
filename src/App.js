@@ -10,9 +10,9 @@ function App() {
     <div className="app">
       <Header />
       <div className="app-wrapper">
-        {/* <SideBar/>
-        <OfficesPage/> */}
-        <AddNewOffice/>
+        <SideBar/>
+        <OfficesPage/>
+
       </div>
     </div>
   );
