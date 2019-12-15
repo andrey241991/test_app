@@ -16,7 +16,7 @@
   display: flex;
 }
 
-.office-item .adress-container .adress-container__title {
+.office-item .adress-container__title {
   font-family: OpenSans;
   font-size: 14px;
   font-weight: normal;
@@ -28,12 +28,22 @@
   padding-right: 17px;
 }
 
-.office-item .adress-container .adress-container__item {
+.office-item .adress-container__primary {
+  font-family: OpenSans;
+  font-size: 14px;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #334152;
+  font-weight: 600;
+}
+
+.office-item .adress-container__item {
   display: flex;
   flex-direction: column;
 }
 
-.office-item .adress-container .adress-container__item span {
+.office-item .adress-container__item span {
   font-family: OpenSans;
   font-size: 14px;
   font-weight: normal;

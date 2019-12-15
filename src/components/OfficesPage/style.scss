@@ -4,7 +4,7 @@
 }
 
 .offices-header {
-    border-bottom:dotted 1px #eaeaea;
+    border-bottom: dotted 1px #eaeaea;
 
     .offices-header-title {
         margin: 0;
@@ -39,6 +39,15 @@
     }
 }
 
-.offices-container{
+.offices-container {
     padding: 38px 51px 0 60px;
+}
+
+
+.add-new-office--visible {
+    display: flex;
+}
+
+.add-new-office--hidden {
+    display: none;
 }

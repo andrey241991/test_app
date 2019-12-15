@@ -7,6 +7,7 @@ let initialState = {
     offices: [
         {
             id: '0',
+            primary:false,
             adress: ['Thames Valley Park', 'Reading',
                 'Berkshire, England RG6 1WG', 'United Kingdom'
             ],
@@ -16,6 +17,7 @@ let initialState = {
         },
         {
             id: '1',
+            primary:true,
             adress: ['Thames Valley Park', 'Reading',
                 'Berkshire, England RG6 1WG', 'United Kingdom'
             ],
@@ -23,6 +25,7 @@ let initialState = {
         },
         {
             id: '2',
+            primary:false,
             adress: ['Thames Valley Park', 'Reading',
                 'Berkshire, England RG6 1WG', 'United Kingdom'
             ],
@@ -42,11 +45,9 @@ const officeReducer = (state = initialState, action) => {
                 offices: offices,
             }
         case ADD_OFFICE:
-            let newMessage = { message: state.newMessageBody };
+            let newOffice = action.office;
             return {
-                ...state,
-                newMessageBody: '',
-                messages: [...state.messages, newMessage],
+                offices: [offices, ...newOffice],
             }
         case UPDATE_OFFICE:
             return {
@@ -64,9 +65,16 @@ const officeReducer = (state = initialState, action) => {
 
 }
 
-export const addOfficeActionCreator = () => ({ type: ADD_OFFICE })
+export const addOfficeActionCreator = (office) => ({ type: ADD_OFFICE, office: office })
 export const updateOfficeActionCreator = (id) => ({ type: UPDATE_OFFICE, Id: id })
 export const deleteOfficeActionCreator = (id) => ({ type: DELETE_OFFICE, Id: id })
 export const setOfficesActionCreator = (offices) => ({ type: SET_OFFICES, offices: offices })
 
 export default officeReducer;
+
+
+// return {
+//     ...state,
+//     newMessageBody: '',
+//     messages: [...state.messages, newMessage],
+// }

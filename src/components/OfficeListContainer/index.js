@@ -4,7 +4,6 @@ import OfficeList from '../OfficeList';
 import * as firebase from 'firebase';
 import { connect } from 'react-redux'
 import { setOfficesActionCreator } from '../../redux/office-reducer';
-import { generateID } from '../../utils/utils'
 
 const firebaseConfig = {
     apiKey: "AIzaSyCoCOFTkFvJCtj8-_F31_WXop9SBYiW9lE",
@@ -20,7 +19,6 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 class OfficeListContainer extends React.Component {
-
 
     componentDidMount() {
         this.getOffices();
@@ -83,12 +81,6 @@ const mapDispatchToProps = (dispatch) => {
         setOffices: (offices) => {
             dispatch(setOfficesActionCreator(offices));
         },
-        removeOffice: () => {
-            dispatch();
-        },
-        // sendMessage: () =>{
-        //     dispatch(addMessageActionCreator() );
-        // }
     }
 
 }

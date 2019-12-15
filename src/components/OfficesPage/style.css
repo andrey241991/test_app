@@ -42,3 +42,11 @@
 .offices-container {
   padding: 38px 51px 0 60px;
 }
+
+.add-new-office--visible {
+  display: flex;
+}
+
+.add-new-office--hidden {
+  display: none;
+}
