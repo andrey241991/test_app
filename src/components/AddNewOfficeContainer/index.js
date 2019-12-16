@@ -4,20 +4,8 @@ import { connect } from 'react-redux'
 import { generateID } from '../../utils/utils'
 import AddNewOffice from '../AddNewOffice';
 import { options } from '../../countries'
-import { addOfficeActionCreator } from '../../redux/office-reducer';
-
-// const firebaseConfig = {
-//     apiKey: "AIzaSyCoCOFTkFvJCtj8-_F31_WXop9SBYiW9lE",
-//     authDomain: "officeapp-a0ad9.firebaseapp.com",
-//     databaseURL: "https://officeapp-a0ad9.firebaseio.com",
-//     projectId: "officeapp-a0ad9",
-//     storageBucket: "officeapp-a0ad9.appspot.com",
-//     messagingSenderId: "103183867653",
-//     appId: "1:103183867653:web:bc4ee164e988e70957216c"
-// };
-
-// firebase.initializeApp(firebaseConfig);
-// const db = firebase.firestore();
+import { addOfficeActionCreator, setOfficesActionCreator } from '../../redux/office-reducer';
+import { getAll, add } from '../../db/dataBase'
 
 class AddNewOfficeContainer extends React.Component {
 
@@ -25,6 +13,7 @@ class AddNewOfficeContainer extends React.Component {
         super();
         this.state = {
             country: options[0],
+            province: '',
             postalCode: '',
             city: '',
             streetAddress: '',
@@ -48,18 +37,47 @@ class AddNewOfficeContainer extends React.Component {
             fax,
             email,
         } = this.state;
+
         let adress = [country, postalCode, city, streetAddress, addressOptional];
         const id = generateID();
         const newOffice = {
             id,
             primary,
             country,
-            adress:adress,
+            adress: adress,
             phone,
             fax,
             email,
         }
-        console.log('newOffice', newOffice);
+        this.addOffice(newOffice);
+        this.cleanFields();
+    }
+
+    async addOffice(newOffice) {
+        add(newOffice);
+        this.getOffices();
+    }
+
+    async getOffices() {
+        let items = getAll();
+        items.then(items => {
+            this.props.setOffices(items);
+        })
+    }
+
+    cleanFields() {
+        this.setState({
+            country: options[0],
+            primary: false,
+            postalCode: '',
+            city: '',
+            streetAddress: '',
+            addressOptional: '',
+            phone: '',
+            fax: '',
+            email: '',
+            province: ''
+        })
     }
 
     handleInput(type, body) {
@@ -75,49 +93,19 @@ class AddNewOfficeContainer extends React.Component {
     }
 
     handleSelectInput(e) {
-        console.log('type', e.target.value);
         this.setState({
             country: e.target.value
         })
     }
 
     render() {
-        // const {
-        //     country,
-        //     state,
-        //     city,
-        //     postalCode,
-        //     streetAddress,
-        //     addressOptional,
-        //     phone,
-        //     fax,
-        //     email,
-        //     primary,
-        //     hideAddNewOffice,
-        //     addNewOffice
-        // } = this.state;
-
         return (
             <AddNewOffice
+                state={this.state}
                 hideAddNewOffice={this.props.hideAddNewOffice}
-                offices={this.props.offices}
                 addNewOffice={this.addNewOffice.bind(this)}
                 handleInput={this.handleInput.bind(this)}
                 handleSelectInput={this.handleSelectInput.bind(this)}
-
-
-            // country={country}
-
-            // city={city}
-            // postalCode={postalCode}
-            // streetAddress={streetAddress}
-            // addressOptional={addressOptional}
-            // phone={phone}
-            // fax={fax}
-            // email={email}
-            // primary={primary}
-            // hideAddNewOffice={hideAddNewOffice}
-
             />
         )
     }
@@ -131,50 +119,13 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addOffice: (office) =>{
+        addOffice: (office) => {
             dispatch(addOfficeActionCreator(office));
-        }
+        },
+        setOffices: (offices) => {
+            dispatch(setOfficesActionCreator(offices));
+        },
     }
-
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddNewOfficeContainer);
-
-// OfficeListContainer = connect(mapStateToProps, mapDispatchToProps)(OfficeList);
-// export default OfficeListContainer;
-
-
-
-
-// setToDataBase() {
-//     console.log('firebetToDataBasease IS CALL');
-//     const db = firebase.firestore();
-//     db.settings({
-//         timestampsInSnapshots: true
-//     });
-//     const userRef = db.collection('offices').add({
-//         adress: ['myAdress'],
-//         email: 'myEmail',
-//         phone: '+380947878'
-//     });
-// }
-
-// getOffices() {
-//     let items = [];
-//     const db = firebase.firestore();
-//     db.collection('offices').get().then((snapshot) => {
-//         snapshot.docs.forEach(doc => {
-//             let item = doc.data();
-//             item = JSON.stringify(item);
-//             items.push(item)
-//         });
-//     });
-//     this.setState({
-//         offices: items
-//     })
-// }
-
-// componentDidMount() {
-//     this.getOffices();
-// }
-

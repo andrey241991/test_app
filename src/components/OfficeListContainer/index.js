@@ -4,19 +4,20 @@ import OfficeList from '../OfficeList';
 import * as firebase from 'firebase';
 import { connect } from 'react-redux'
 import { setOfficesActionCreator } from '../../redux/office-reducer';
+import { getAll, remove } from '../../db/dataBase'
 
-const firebaseConfig = {
-    apiKey: "AIzaSyCoCOFTkFvJCtj8-_F31_WXop9SBYiW9lE",
-    authDomain: "officeapp-a0ad9.firebaseapp.com",
-    databaseURL: "https://officeapp-a0ad9.firebaseio.com",
-    projectId: "officeapp-a0ad9",
-    storageBucket: "officeapp-a0ad9.appspot.com",
-    messagingSenderId: "103183867653",
-    appId: "1:103183867653:web:bc4ee164e988e70957216c"
-};
+// const firebaseConfig = {
+//     apiKey: "AIzaSyCoCOFTkFvJCtj8-_F31_WXop9SBYiW9lE",
+//     authDomain: "officeapp-a0ad9.firebaseapp.com",
+//     databaseURL: "https://officeapp-a0ad9.firebaseio.com",
+//     projectId: "officeapp-a0ad9",
+//     storageBucket: "officeapp-a0ad9.appspot.com",
+//     messagingSenderId: "103183867653",
+//     appId: "1:103183867653:web:bc4ee164e988e70957216c"
+// };
 
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
+// firebase.initializeApp(firebaseConfig);
+// const db = firebase.firestore();
 
 class OfficeListContainer extends React.Component {
 
@@ -25,34 +26,17 @@ class OfficeListContainer extends React.Component {
     }
 
     async getOffices() {
-        let items = [];
-        await db.collection('offices').get().then((snapshot) => {
-            snapshot.docs.forEach(doc => {
-                let item = doc.data();
-                items.push(item)
-            });
-        });
-        this.props.setOffices(items);
+        let items = getAll();
+        items.then(items => {
+            this.props.setOffices(items);
+        })
     }
 
     async removeOffice(id) {
-        const officeQuery = db.collection('offices').where('id', '==', id);
-        officeQuery.get().then(function (querySnapshot) {
-            querySnapshot.forEach(function (doc) {
-                doc.ref.delete();
-            });
-        });
-
-        let items = [];
-        await db.collection('offices').get().then((snapshot) => {
-            snapshot.docs.forEach(doc => {
-                let item = doc.data();
-                if (item.id !== id) {
-                    items.push(item)
-                }
-            });
-        });
-        this.props.setOffices(items);
+        let items = remove(id);
+        items.then(items => {
+            this.props.setOffices(items);
+        })
     }
 
     editOffice(id) {

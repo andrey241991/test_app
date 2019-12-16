@@ -4,22 +4,13 @@ import Button from '../Button';
 import { options } from '../../countries'
 import Input from '../Input';
 
-const AddNewOffice = ({
-  country,
-  state,
-  city,
-  postalCode,
-  streetAddress,
-  addressOptional,
-  phone,
-  fax,
-  email,
-  primary,
-  hideAddNewOffice,
-  addNewOffice,
-  handleInput,
-  handleSelectInput
-}) => {
+const AddNewOffice = (
+  { state,
+    hideAddNewOffice,
+    addNewOffice,
+    handleInput,
+    handleSelectInput }
+) => {
 
   return (
     <section
@@ -31,7 +22,7 @@ const AddNewOffice = ({
             <span className='country__logo'>
               *Country:
           </span>
-            <select onChange={handleSelectInput} value={country} className='country__select' id='country'>
+            <select onChange={handleSelectInput} value={state.country} className='country__select' id='country'>
               {options.map((country, index) => {
                 return <option key={index}>{country}</option>
               })}
@@ -40,31 +31,31 @@ const AddNewOffice = ({
           <Input
             handleInput={handleInput}
             logo='*State/Province:'
-            value={state}
-            fieldName={'state'}
+            value={state.province}
+            fieldName={'province'}
           />
           <Input
             handleInput={handleInput}
             logo='*Postal Code:'
-            value={postalCode}
+            value={state.postalCode}
             fieldName={'postalCode'}
           />
           <Input
             handleInput={handleInput}
             logo='*City:'
-            value={city}
+            value={state.city}
             fieldName={'city'}
           />
           <Input
             handleInput={handleInput}
             logo='*Street Address:'
-            value={streetAddress}
+            value={state.streetAddress}
             fieldName={'streetAddress'}
           />
           <Input
             handleInput={handleInput}
             logo='Address 2:'
-            value={addressOptional}
+            value={state.addressOptional}
             fieldName={'addressOptional'}
           />
         </div>
@@ -72,27 +63,27 @@ const AddNewOffice = ({
           <Input
             handleInput={handleInput}
             logo='Phone:'
-            value={phone}
+            value={state.phone}
             fieldName={'phone'}
           />
           <Input
             handleInput={handleInput}
             logo='Fax:'
-            value={fax}
+            value={state.fax}
             fieldName={'fax'}
           />
           <Input
             handleInput={handleInput}
             logo='Email:'
-            value={email}
+            value={state.email}
             fieldName={'email'}
           />
           <Input
             handleInput={handleInput}
             inputType='checkbox'
             logo='Office Type'
-            value={primary}
-            fieldName='primary'
+            value={state.primary}
+            fieldName={'primary'}
           >Primary HQ</Input>
         </div>
         <div className='buttons-container'>
@@ -105,4 +96,3 @@ const AddNewOffice = ({
 }
 
 export default AddNewOffice;
-
