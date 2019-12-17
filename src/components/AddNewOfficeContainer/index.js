@@ -22,6 +22,7 @@ class AddNewOfficeContainer extends React.Component {
             fax: '',
             email: '',
             primary: false,
+            isInputError: false,
         };
         console.log('AddNewOfficeContainer')
     }
@@ -37,8 +38,13 @@ class AddNewOfficeContainer extends React.Component {
             addressOptional,
             phone,
             fax,
-            email,
+            email
         } = this.state;
+
+        if( province === '' || postalCode === '' || city === '' || streetAddress === ''){
+            alert('The required fields should not be empty');
+            return;
+        }
 
         let adress = [country, province, postalCode, city, streetAddress, addressOptional];
         const id = generateID();
@@ -103,7 +109,6 @@ class AddNewOfficeContainer extends React.Component {
         return (
             <AddNewOffice
                 state={this.state}
-                // hideAddNewOffice={this.props.hideAddNewOffice}
                 hideOffice={this.props.hideOffice}
                 addNewOffice={this.addNewOffice.bind(this)}
                 handleInput={this.handleInput.bind(this)}

@@ -63,46 +63,6 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(setOfficesActionCreator(offices));
         },
     }
-
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(OfficeListContainer);
-
-// OfficeListContainer = connect(mapStateToProps, mapDispatchToProps)(OfficeList);
-// export default OfficeListContainer;
-
-
-
-
-// setToDataBase() {
-//     console.log('firebetToDataBasease IS CALL');
-//     const db = firebase.firestore();
-//     db.settings({
-//         timestampsInSnapshots: true
-//     });
-//     const userRef = db.collection('offices').add({
-//         adress: ['myAdress'],
-//         email: 'myEmail',
-//         phone: '+380947878'
-//     });
-// }
-
-// getOffices() {
-//     let items = [];
-//     const db = firebase.firestore();
-//     db.collection('offices').get().then((snapshot) => {
-//         snapshot.docs.forEach(doc => {
-//             let item = doc.data();
-//             item = JSON.stringify(item);
-//             items.push(item)
-//         });
-//     });
-//     this.setState({
-//         offices: items
-//     })
-// }
-
-// componentDidMount() {
-//     this.getOffices();
-// }
-

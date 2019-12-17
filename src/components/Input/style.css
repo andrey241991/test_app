@@ -24,14 +24,10 @@
     margin-left: 10px;
 }
 
-
-
-.error__field {
-    display: none;
-    padding: 0;
-    margin: 0;
-    font-size: 14px;
-    font-weight: 400;
-    color: red;
-
+.input__field--error{
+    width: 191px;
+    min-height: 32px;
+    box-sizing: border-box;
+    margin-left: 10px;
+    border: 1px solid red;
 }
