@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import './style.css';
 import { connect } from 'react-redux'
-import { generateID } from '../../utils/utils'
 import AddNewOffice from '../AddNewOffice';
 import { options } from '../../countries'
-import { addOfficeActionCreator, setOfficesActionCreator } from '../../redux/office-reducer';
-import { getAll, add } from '../../db/dataBase'
+import { setOfficesActionCreator } from '../../redux/office-reducer';
+import {getById, update } from '../../db/dataBase'
 
-class AddNewOfficeContainer extends React.Component {
+class EditOfficeContainer extends React.Component {
 
     constructor(props) {
         super();
         this.state = {
+            id: '',
             country: options[0],
             province: '',
             postalCode: '',
@@ -22,26 +22,27 @@ class AddNewOfficeContainer extends React.Component {
             fax: '',
             email: '',
             primary: false,
+            itemId: props.editedItemId,
         };
-        console.log('AddNewOfficeContainer')
+        console.log('EditOfficeContainer')
     }
 
     addNewOffice() {
         const {
+            id,
             primary,
             country,
-            province,
             postalCode,
+            province,
             city,
             streetAddress,
-            addressOptional,
-            phone,
-            fax,
-            email,
+            addressOptional = '',
+            phone='',
+            fax='',
+            email='',
         } = this.state;
 
         let adress = [country, province, postalCode, city, streetAddress, addressOptional];
-        const id = generateID();
         const newOffice = {
             id,
             primary,
@@ -50,35 +51,35 @@ class AddNewOfficeContainer extends React.Component {
             fax,
             email,
         }
-        this.addOffice(newOffice);
-        this.cleanFields();
-    }
 
-    async addOffice(newOffice) {
-        add(newOffice);
-        this.getOffices();
-    }
-
-    async getOffices() {
-        let items = getAll();
+        let items = update(id, newOffice);
         items.then(items => {
             this.props.setOffices(items);
         })
     }
 
-    cleanFields() {
+    setFields = (item) => {
+        console.log('ITEM = ', item); // 1
         this.setState({
-            country: options[0],
-            primary: false,
-            postalCode: '',
-            city: '',
-            streetAddress: '',
-            addressOptional: '',
-            phone: '',
-            fax: '',
-            email: '',
-            province: ''
+            id: item.id,
+            country: item.adress[0],
+            province: item.adress[1],
+            postalCode: item.adress[2],
+            city: item.adress[3],
+            streetAddress: item.adress[4],
+            addressOptional: item.adress[5],
+            email: item.email,
+            fax: item.fax,
+            phone: item.phone,
+            primary: item.primary,
         })
+    }
+
+    async getOfficeById() {
+        let items = getById(this.props.editedItemId);
+        Promise.resolve(items).then(item => {
+            this.setFields(item[0]);
+        });
     }
 
     handleInput(type, body) {
@@ -99,11 +100,18 @@ class AddNewOfficeContainer extends React.Component {
         })
     }
 
+
+    componentDidUpdate(prevProps) {
+        if (this.props.editedItemId !== prevProps.editedItemId) {
+            this.getOfficeById();
+        }
+    }
+
     render() {
+        console.log('render email', this.state.email);
         return (
             <AddNewOffice
                 state={this.state}
-                // hideAddNewOffice={this.props.hideAddNewOffice}
                 hideOffice={this.props.hideOffice}
                 addNewOffice={this.addNewOffice.bind(this)}
                 handleInput={this.handleInput.bind(this)}
@@ -121,13 +129,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addOffice: (office) => {
-            dispatch(addOfficeActionCreator(office));
-        },
         setOffices: (offices) => {
             dispatch(setOfficesActionCreator(offices));
         },
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddNewOfficeContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(EditOfficeContainer);

@@ -4,14 +4,19 @@ import Button from '../Button';
 import { options } from '../../countries'
 import Input from '../Input';
 
+// const hideTest = ()=>{
+//   console.log('hideOffice22', this.props.hideOffice);
+// }
+
 const AddNewOffice = (
   { state,
-    hideAddNewOffice,
+    hideOffice,
     addNewOffice,
     handleInput,
     handleSelectInput }
 ) => {
 
+  console.log('hideOffice', hideOffice);
   return (
     <section
       className='add-new-office'>
@@ -87,7 +92,8 @@ const AddNewOffice = (
           >Primary HQ</Input>
         </div>
         <div className='buttons-container'>
-          <Button theme='button__remove-theme' onClickCallBack={hideAddNewOffice}>Cancel</Button>
+          {}
+          <Button theme='button__remove-theme' onClickCallBack={hideOffice}>Cancel</Button>
           <Button theme='button__edit-theme' onClickCallBack={addNewOffice}>Save</Button>
         </div>
       </div>

@@ -43,10 +43,10 @@
   padding: 38px 51px 0 60px;
 }
 
-.add-new-office--visible {
+.office--visible {
   display: flex;
 }
 
-.add-new-office--hidden {
+.office--hidden {
   display: none;
 }

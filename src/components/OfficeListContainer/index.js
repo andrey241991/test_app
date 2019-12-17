@@ -4,20 +4,8 @@ import OfficeList from '../OfficeList';
 import * as firebase from 'firebase';
 import { connect } from 'react-redux'
 import { setOfficesActionCreator } from '../../redux/office-reducer';
-import { getAll, remove } from '../../db/dataBase'
+import { getAll, remove, getById } from '../../db/dataBase'
 
-// const firebaseConfig = {
-//     apiKey: "AIzaSyCoCOFTkFvJCtj8-_F31_WXop9SBYiW9lE",
-//     authDomain: "officeapp-a0ad9.firebaseapp.com",
-//     databaseURL: "https://officeapp-a0ad9.firebaseio.com",
-//     projectId: "officeapp-a0ad9",
-//     storageBucket: "officeapp-a0ad9.appspot.com",
-//     messagingSenderId: "103183867653",
-//     appId: "1:103183867653:web:bc4ee164e988e70957216c"
-// };
-
-// firebase.initializeApp(firebaseConfig);
-// const db = firebase.firestore();
 
 class OfficeListContainer extends React.Component {
 
@@ -39,8 +27,17 @@ class OfficeListContainer extends React.Component {
         })
     }
 
+    async getOfficeById(id) {
+        let item = getById(id);
+        console.log('id', id);
+        console.log('item mu', item);
+        item.then(items => {
+            this.props.setOffices(items);
+        })
+    }
+
     editOffice(id) {
-        console.log('update id = ', id);
+        this.props.showEditOfficeAndSetItemId(id);
     }
 
     render() {

@@ -5,22 +5,53 @@ import OfficeListContainer from '../OfficeListContainer';
 import AddNewOffice from '../AddNewOffice';
 import { render } from '@testing-library/react';
 import AddNewOfficeContainer from '../AddNewOfficeContainer';
+import EditOfficeContainer from '../EditOfficeContainer';
 
 class OfficesPage extends React.Component {
 
     constructor() {
         super();
         this.state = {
-            isAddNewOfficeVisible: false
+            isAddNewOfficeVisible: false,
+            isEditNewOfficeVisible: false,
+            editedItemId: ''
         };
     }
 
-    showAddNewOffice = () => this.setState({ isAddNewOfficeVisible: true })
-    hideAddNewOffice = () => this.setState({ isAddNewOfficeVisible: false })
+    showAddNewOffice = () => {this.setState({ isAddNewOfficeVisible: true })}
+    hideAddNewOffice = () => {
+        console.log('hideAddNewOffice');
+        this.setState({ isAddNewOfficeVisible: false })
+    }
+
+
+    showEditOfficeAndSetItemId = (itemId) => {
+        console.log('itemId', itemId);
+        this.setState({
+            isEditNewOfficeVisible: true,
+            editedItemId: itemId
+        })
+    }
+    hideEditOffice = () => {
+        console.log('hideEditOffice');
+        this.setState({ isEditNewOfficeVisible: false })
+    }
+
+
+
+    // this.setState({ isAddNewOfficeVisible: false })
+
+
+    // hideEditOffice = () =>{
+    //     console.log('hideEditOffice');
+    //     this.setState({ isEditNewOfficeVisible: false })
+    // }
+    //  this.setState({ isEditNewOfficeVisible: false })
+
+
 
     render() {
-        const { isAddNewOfficeVisible } = this.state;
-        console.log('render isAddNewOfficeVisible', isAddNewOfficeVisible);
+        const { isAddNewOfficeVisible, isEditNewOfficeVisible, editedItemId } = this.state;
         return (
             <section className='offices'>
                 <div className='offices-container'>
@@ -35,11 +66,24 @@ class OfficesPage extends React.Component {
                         <Button onClickCallBack={this.showAddNewOffice}>Add New Office</Button>
                         <div className={
                             isAddNewOfficeVisible
-                                ? 'add-new-office--visible'
-                                : 'add-new-office--hidden'}>
-                            <AddNewOfficeContainer hideAddNewOffice={this.hideAddNewOffice} />
+                                ? 'office--visible'
+                                : 'office--hidden'}>
+                            <AddNewOfficeContainer
+                                hideOffice={this.hideAddNewOffice}
+                            />
                         </div>
-                        <OfficeListContainer />
+                        <div className={isEditNewOfficeVisible
+                            ? 'office--visible'
+                            : 'office--hidden'}>
+                            <EditOfficeContainer
+                                editedItemId={editedItemId}
+                                hideOffice={this.hideEditOffice}
+                            />
+                        </div>
+
+                        <OfficeListContainer
+                            showEditOfficeAndSetItemId={this.showEditOfficeAndSetItemId}
+                        />
                     </div>
                     <div className='offices-page-footer'>
                     </div>
