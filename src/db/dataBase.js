@@ -36,18 +36,6 @@ export async function getById(id) {
         });
     });
     return items;
-
-
-    // const officeQuery = db.collection('offices').where('id', '==', id);
-    // let items = [];
-    // await db.collection('offices').where('id', '==', id).then((snapshot) => {
-    //     snapshot.docs.forEach(doc => {
-    //         let item = doc.data();
-    //         console.log('MyItem = ', item)
-    //         // items.push(item)
-    //     });
-    // });
-    // return items;
 }
 
 export async function remove(id) {
@@ -94,22 +82,3 @@ export async function update(id, updatedOffice) {
    });
    return items;
 }
-
-
-
-
-
-
-
-// setToDataBase() {
-//     console.log('firebetToDataBasease IS CALL');
-//     const db = firebase.firestore();
-//     db.settings({
-//         timestampsInSnapshots: true
-//     });
-//     const userRef = db.collection('offices').add({
-//         adress: ['myAdress'],
-//         email: 'myEmail',
-//         phone: '+380947878'
-//     });
-// }

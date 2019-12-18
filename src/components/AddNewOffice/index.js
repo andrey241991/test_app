@@ -86,6 +86,7 @@ const AddNewOffice =
               fieldName={'email'}
             />
             <Input
+              theme='checkbox'
               handleInput={handleInput}
               inputType='checkbox'
               logo='Office Type'

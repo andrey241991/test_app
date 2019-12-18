@@ -37,9 +37,8 @@
   font-family: OpenSans;
   font-size: 14px;
   font-weight: bold;
-  line-height: 1;
   color: #53687e;
-  padding: 6px 16px;
+  padding: 6px 16px !important;
   border-radius: 2px;
   border: solid 1px #53687e;
   background-color: #ffffff;

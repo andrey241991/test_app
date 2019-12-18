@@ -24,7 +24,6 @@ class EditOfficeContainer extends React.Component {
             primary: false,
             itemId: props.editedItemId,
         };
-        console.log('EditOfficeContainer')
     }
 
     addNewOffice() {
@@ -59,7 +58,6 @@ class EditOfficeContainer extends React.Component {
     }
 
     setFields = (item) => {
-        console.log('ITEM = ', item); // 1
         this.setState({
             id: item.id,
             country: item.adress[0],
@@ -99,7 +97,6 @@ class EditOfficeContainer extends React.Component {
             country: e.target.value
         })
     }
-
 
     componentDidUpdate(prevProps) {
         if (this.props.editedItemId !== prevProps.editedItemId) {

@@ -39,20 +39,15 @@
     }
 }
 
-
 .offices-container {
     padding: 38px 51px 0 60px;
 }
 
-
-.office--visible {
-    display: flex;
-}
+.office--visible {}
 
 .office--hidden {
     display: none;
 }
-
 
 .offices-page-footer {
     display: flex;
@@ -78,7 +73,7 @@
         padding-right: 32px;
     }
 
-    .btn__container{
-        padding-right:32px;
+    .btn__container {
+        padding-right: 32px;
     }
 }

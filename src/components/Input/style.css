@@ -31,3 +31,10 @@
     margin-left: 10px;
     border: 1px solid red;
 }
+
+.checkbox{
+    width: auto;
+    min-height: auto;
+    box-sizing: border-box;
+    margin-left: 10px;
+}

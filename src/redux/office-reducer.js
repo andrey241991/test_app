@@ -71,10 +71,3 @@ export const deleteOfficeActionCreator = (id) => ({ type: DELETE_OFFICE, Id: id 
 export const setOfficesActionCreator = (offices) => ({ type: SET_OFFICES, offices: offices })
 
 export default officeReducer;
-
-
-// return {
-//     ...state,
-//     newMessageBody: '',
-//     messages: [...state.messages, newMessage],
-// }

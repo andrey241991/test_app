@@ -26,7 +26,6 @@ class AddNewOfficeContainer extends React.Component {
             isInputError: false,
             isLoaderVisible: false,
         };
-        console.log('AddNewOfficeContainer')
     }
 
     addNewOffice() {

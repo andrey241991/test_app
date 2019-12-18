@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import './style.css';
 import OfficeList from '../OfficeList';
-import * as firebase from 'firebase';
 import { connect } from 'react-redux'
 import { setOfficesActionCreator } from '../../redux/office-reducer';
 import { getAll, remove, getById } from '../../db/dataBase'
 import CustomLoader from '../CustomLoader';
-import { fail } from 'assert';
 import ConfirmationComponent from '../ConfirmationComponent';
 
 
@@ -58,8 +56,6 @@ class OfficeListContainer extends React.Component {
     }
 
     async removeOffice() {
-        // console.log('removeOffice id2 =', this.state.itemId);
-
         let items = remove(this.state.itemId);
         items.then(items => {
             this.props.setOffices(items);
@@ -67,19 +63,10 @@ class OfficeListContainer extends React.Component {
         this.setState({
             isConfirmationWindowVisible: false,
         })
-        // console.log('removeOffice id =', id);
-
-
-
-        // this.setState({
-        //     isLoaderVisible: false,
-        // })
     }
 
     async getOfficeById(id) {
         let item = getById(id);
-        console.log('id', id);
-        console.log('item mu', item);
         item.then(items => {
             this.props.setOffices(items);
         })

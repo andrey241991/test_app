@@ -1,6 +1,7 @@
 import React from 'react';
 import './style.css';
 import Button from '../Button';
+import PropTypes from 'prop-types';
 
 const ConfirmationComponent = ({hideConfirmationRemoveWindow, removeOffice }) => {
 
@@ -14,5 +15,10 @@ const ConfirmationComponent = ({hideConfirmationRemoveWindow, removeOffice }) =>
         </section>
     );
 }
+
+Button.propTypes = {
+    hideConfirmationRemoveWindow: PropTypes.func.isRequired,
+    removeOffice: PropTypes.func.isRequired,
+  };
 
 export default ConfirmationComponent;

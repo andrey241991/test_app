@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import './style.css';
 import Button from '../Button';
 import OfficeListContainer from '../OfficeListContainer';
-import AddNewOffice from '../AddNewOffice';
-import { render } from '@testing-library/react';
 import AddNewOfficeContainer from '../AddNewOfficeContainer';
 import EditOfficeContainer from '../EditOfficeContainer';
 

@@ -29,13 +29,13 @@ class Input extends React.Component {
     }
 
     render() {
-        const { inputType, logo, children, value, } = this.props;
+        const { inputType, logo, children, value, theme } = this.props;
         const { isErrorVisible } = this.state;
         return (
             <section className='input'>
                 <span className='input__title'>{logo}</span>
                 <input
-                    className={isErrorVisible ? 'input__field--error' : 'input__field'}
+                    className={isErrorVisible ? 'input__field--error' : `input__field ${theme}`}
                     checked={inputType === 'checkbox' ? value : false}
                     value={value}
                     type={inputType}
