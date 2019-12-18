@@ -4,7 +4,7 @@ import Button from '../Button';
 import PropTypes from 'prop-types';
 
 
-const OfficeItem = ({ primary, adress, phone, email, fax, id, removeOffice, editOffice }) => {
+const OfficeItem = ({ primary, adress, phone, email, fax, id, showConfirmationRemoveWindow, editOffice }) => {
 
   return (
     <section className='office-item'>
@@ -47,7 +47,7 @@ const OfficeItem = ({ primary, adress, phone, email, fax, id, removeOffice, edit
           }
         </div>
         <div className='buttons-container'>
-          <Button theme='button__remove-theme' onClickCallBack={() => removeOffice(id)}>Remove</Button>
+          <Button theme='button__remove-theme' onClickCallBack={() => showConfirmationRemoveWindow(id)}>Remove</Button>
           <Button theme='button__edit-theme' onClickCallBack={() => editOffice(id)}>Edit</Button>
         </div>
       </div>
@@ -70,7 +70,7 @@ OfficeItem.propTypes = {
   email: PropTypes.string.isRequired,
   fax: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
-  removeOffice: PropTypes.func.isRequired,
+  showConfirmationRemoveWindow: PropTypes.func.isRequired,
   editOffice: PropTypes.func.isRequired
 };
 

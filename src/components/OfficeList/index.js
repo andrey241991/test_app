@@ -3,7 +3,7 @@ import './style.css';
 import OfficeItem from '../OfficeItem';
 import PropTypes from 'prop-types';
 
-const OfficeList = ({ offices, removeOffice, editOffice }) => {
+const OfficeList = ({ offices, showConfirmationRemoveWindow, editOffice }) => {
     return offices.map(item => {
         return <OfficeItem
             key={item.id}
@@ -13,7 +13,7 @@ const OfficeList = ({ offices, removeOffice, editOffice }) => {
             email={item.email}
             fax={item.fax}
             id={item.id}
-            removeOffice={removeOffice}
+            showConfirmationRemoveWindow={showConfirmationRemoveWindow}
             editOffice={editOffice}
         />
     })
@@ -27,7 +27,7 @@ OfficeList.defaultProps = {
 
 OfficeList.propTypes = {
     offices: PropTypes.array.isRequired,
-    removeOffice: PropTypes.func.isRequired,
+    showConfirmationRemoveWindow: PropTypes.func.isRequired,
     editOffice: PropTypes.func.isRequired
 };
 

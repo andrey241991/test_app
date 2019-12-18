@@ -16,6 +16,8 @@ class OfficeListContainer extends React.Component {
         super();
         this.state = {
             isLoaderVisible: false,
+            isConfirmationWindowVisible: false,
+            itemId: ''
         };
     }
 
@@ -42,28 +44,45 @@ class OfficeListContainer extends React.Component {
         })
     }
 
-    async removeOffice(id) {
+    showConfirmationRemoveWindow(id) {
         this.setState({
-            isLoaderVisible: true,
+            isConfirmationWindowVisible: true,
+            itemId: id
         })
-        let items = remove(id);
+    }
+
+    hideConfirmationRemoveWindow = () => {
+        this.setState({
+            isConfirmationWindowVisible: false,
+        })
+    }
+
+    async removeOffice() {
+        // console.log('removeOffice id2 =', this.state.itemId);
+
+        let items = remove(this.state.itemId);
         items.then(items => {
             this.props.setOffices(items);
         })
+        this.setState({
+            isConfirmationWindowVisible: false,
+        })
+        // console.log('removeOffice id =', id);
+
+
+
         // this.setState({
         //     isLoaderVisible: false,
         // })
     }
 
     async getOfficeById(id) {
-        this.showLoader();
         let item = getById(id);
         console.log('id', id);
         console.log('item mu', item);
         item.then(items => {
             this.props.setOffices(items);
         })
-        this.showLoader();
     }
 
     editOffice(id) {
@@ -71,15 +90,18 @@ class OfficeListContainer extends React.Component {
     }
 
     render() {
+        const { isConfirmationWindowVisible } = this.state
         return (
             <>
                 <OfficeList
                     offices={this.props.offices}
-                    removeOffice={this.removeOffice.bind(this)}
+                    showConfirmationRemoveWindow={this.showConfirmationRemoveWindow.bind(this)}
                     editOffice={this.editOffice.bind(this)}
                 />
                 <CustomLoader visible={this.state.isLoaderVisible} />
-                <ConfirmationComponent />
+                <div className={isConfirmationWindowVisible ? 'confirmation-component__wrapper' : 'confirmation-component__wrapper--not-visible'}>
+                    <ConfirmationComponent hideConfirmationRemoveWindow={this.hideConfirmationRemoveWindow} removeOffice={this.removeOffice.bind(this)} />
+                </div>
             </>
         )
     }

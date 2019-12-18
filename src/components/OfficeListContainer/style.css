@@ -32,3 +32,11 @@
   color: #ffffff;
   padding: 5px 16px;
 }
+
+.confirmation-component__wrapper{
+  display: block;
+}
+
+.confirmation-component__wrapper--not-visible{
+  display: none;
+}
