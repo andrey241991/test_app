@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './style.css';
+import PropTypes from 'prop-types';
 
 class Input extends React.Component {
 
@@ -38,11 +39,26 @@ class Input extends React.Component {
                     checked={inputType === 'checkbox' ? value : false}
                     value={value}
                     type={inputType}
-                    onChange={this.onHandleInput}/>
+                    onChange={this.onHandleInput} />
                 {children}
             </section>
         );
     }
 }
+
+Input.defaultProps = {
+    isRequared: false,
+    inputType:'',
+};
+
+Input.propTypes = {
+    handleInput: PropTypes.func.isRequired,
+    fieldName: PropTypes.string.isRequired,
+    isRequared: PropTypes.bool,
+    inputType: PropTypes.string,
+    logo: PropTypes.string.isRequired,
+    children: PropTypes.string,
+    value:  PropTypes.any.isRequired,
+};
 
 export default Input;

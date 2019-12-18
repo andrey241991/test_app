@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.css';
+import PropTypes from 'prop-types';
 
 const Button = ({children, onClickCallBack, theme}) => {
     return(
@@ -8,5 +9,16 @@ const Button = ({children, onClickCallBack, theme}) => {
         </button>
     );
 }
+
+Button.defaultProps = {
+    children:'',
+    theme: ''
+  };
+
+Button.propTypes = {
+    children: PropTypes.string,
+    onClickCallBack: PropTypes.func,
+    theme: PropTypes.string,
+  };
 
 export default Button;

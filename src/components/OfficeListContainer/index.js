@@ -7,6 +7,7 @@ import { setOfficesActionCreator } from '../../redux/office-reducer';
 import { getAll, remove, getById } from '../../db/dataBase'
 import CustomLoader from '../CustomLoader';
 import { fail } from 'assert';
+import ConfirmationComponent from '../ConfirmationComponent';
 
 
 class OfficeListContainer extends React.Component {
@@ -78,6 +79,7 @@ class OfficeListContainer extends React.Component {
                     editOffice={this.editOffice.bind(this)}
                 />
                 <CustomLoader visible={this.state.isLoaderVisible} />
+                <ConfirmationComponent />
             </>
         )
     }

@@ -3,21 +3,18 @@ import './style.css';
 import Button from '../Button';
 import { options } from '../../countries'
 import Input from '../Input';
+import PropTypes from 'prop-types';
+import { generateID } from '../../utils/utils'
 
-// const hideTest = ()=>{
-//   console.log('hideOffice22', this.props.hideOffice);
-// }
 
 const AddNewOffice =
   ({ state,
     hideOffice,
     addNewOffice,
     handleInput,
-    handleError,
     handleSelectInput
   }) => {
 
-    console.log('hideOffice', hideOffice);
     return (
       <section
         className='add-new-office'>
@@ -29,13 +26,12 @@ const AddNewOffice =
                 *Country:
           </span>
               <select onChange={handleSelectInput} value={state.country} className='country__select' id='country'>
-                {options.map((country, index) => {
-                  return <option key={index}>{country}</option>
+                {options.map(country => {
+                  return <option key={generateID()}>{country}</option>
                 })}
               </select>
             </div>
             <Input
-              handleError={handleError}
               handleInput={handleInput}
               logo='*State/Province:'
               value={state.province}
@@ -43,7 +39,6 @@ const AddNewOffice =
               isRequared={true}
             />
             <Input
-              handleError={handleError}
               handleInput={handleInput}
               logo='*Postal Code:'
               value={state.postalCode}
@@ -51,7 +46,6 @@ const AddNewOffice =
               isRequared={true}
             />
             <Input
-              handleError={handleError}
               handleInput={handleInput}
               logo='*City:'
               value={state.city}
@@ -59,7 +53,6 @@ const AddNewOffice =
               isRequared={true}
             />
             <Input
-              handleError={handleError}
               handleInput={handleInput}
               logo='*Street Address:'
               value={state.streetAddress}
@@ -108,5 +101,17 @@ const AddNewOffice =
       </section>
     );
   }
+
+AddNewOffice.defaultProps = {
+  theme: ''
+};
+
+AddNewOffice.propTypes = {
+  state: PropTypes.object,
+  hideOffice: PropTypes.func.isRequired,
+  theme: PropTypes.string,
+  handleInput: PropTypes.func.isRequired,
+  handleSelectInput: PropTypes.func.isRequired,
+};
 
 export default AddNewOffice;

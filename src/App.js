@@ -3,6 +3,7 @@ import './App.css';
 import Header from './components/Header';
 import SideBar from './components/SideBar';
 import OfficesPage from './components/OfficesPage';
+import ConfirmationComponent from './components/ConfirmationComponent';
 
 function App() {
   return (

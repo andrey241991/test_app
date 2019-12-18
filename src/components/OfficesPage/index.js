@@ -37,19 +37,6 @@ class OfficesPage extends React.Component {
         this.setState({ isEditNewOfficeVisible: false })
     }
 
-
-
-    // this.setState({ isAddNewOfficeVisible: false })
-
-
-    // hideEditOffice = () =>{
-    //     console.log('hideEditOffice');
-    //     this.setState({ isEditNewOfficeVisible: false })
-    // }
-    //  this.setState({ isEditNewOfficeVisible: false })
-
-
-
     render() {
         const { isAddNewOfficeVisible, isEditNewOfficeVisible, editedItemId } = this.state;
         return (

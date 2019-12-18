@@ -1,14 +1,8 @@
 import React, { Component } from 'react';
 import './style.css';
 import Button from '../Button';
+import PropTypes from 'prop-types';
 
-// const adressItems = (items) => {
-//   {
-//     return items.map((item) => {
-//       <span>{item}</span>
-//     }
-
-// }
 
 const OfficeItem = ({ primary, adress, phone, email, fax, id, removeOffice, editOffice }) => {
 
@@ -21,8 +15,8 @@ const OfficeItem = ({ primary, adress, phone, email, fax, id, removeOffice, edit
             {primary ? <div className='adress-container__primary'>&#10004; Primary HQ</div> : false}
             <div className='adress-container__item' >
               {adress ?
-                adress.map((item) => {
-                  return <span>{item}</span>
+                adress.map((item, index) => {
+                  return <span key={index}>{item}</span>
                 }) :
                 false
               }
@@ -62,16 +56,23 @@ const OfficeItem = ({ primary, adress, phone, email, fax, id, removeOffice, edit
 }
 
 
+
+OfficeItem.defaultProps = {
+  phone: '',
+  email: '',
+  fax: '',
+};
+
+OfficeItem.propTypes = {
+  primary: PropTypes.bool.isRequired,
+  adress: PropTypes.array.isRequired,
+  phone: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  fax: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  removeOffice: PropTypes.func.isRequired,
+  editOffice: PropTypes.func.isRequired
+};
+
+
 export default OfficeItem;
-
-  //  {/* {adress ?
-  //               adress.map((item) => {
-  //                 return <span>{item}</span>
-  //               }) :
-  //               false
-  //             } */}
-
-
-  // const adressItems = adress.map(item =>
-  //   <span>{item}</span>
-  // );
