@@ -5,3 +5,37 @@
   border: solid 1px #ffffff;
   background-color: #e9f0f5;
 }
+
+.sidebar-image {
+  background: #175786;
+  min-height: 147px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-item-wrapper {
+  display: flex;
+  align-items: center;
+  max-width: 219px;
+  min-height: 50.2px;
+  border-top: solid 1px #d8dde3;
+  border-bottom: solid 1px #d8dde3;
+}
+
+.sidebar__item {
+  padding-left: 23px;
+  font-family: OpenSans;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  letter-spacing: 0.4px;
+  color: #53687e;
+}
+
+.sidebar__item:hover{
+  cursor: pointer;
+}
+
+

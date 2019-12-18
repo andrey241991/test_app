@@ -6,6 +6,7 @@ import AddNewOffice from '../AddNewOffice';
 import { options } from '../../countries'
 import { addOfficeActionCreator, setOfficesActionCreator } from '../../redux/office-reducer';
 import { getAll, add } from '../../db/dataBase'
+import CustomLoader from '../CustomLoader';
 
 class AddNewOfficeContainer extends React.Component {
 
@@ -23,11 +24,17 @@ class AddNewOfficeContainer extends React.Component {
             email: '',
             primary: false,
             isInputError: false,
+            isLoaderVisible: false,
         };
         console.log('AddNewOfficeContainer')
     }
 
     addNewOffice() {
+
+        this.setState({
+            isLoaderVisible: true
+        })
+
         const {
             primary,
             country,
@@ -38,10 +45,10 @@ class AddNewOfficeContainer extends React.Component {
             addressOptional,
             phone,
             fax,
-            email
+            email,
         } = this.state;
 
-        if( province === '' || postalCode === '' || city === '' || streetAddress === ''){
+        if (province === '' || postalCode === '' || city === '' || streetAddress === '') {
             alert('The required fields should not be empty');
             return;
         }
@@ -58,6 +65,9 @@ class AddNewOfficeContainer extends React.Component {
         }
         this.addOffice(newOffice);
         this.cleanFields();
+        this.setState({
+            isLoaderVisible: false
+        })
     }
 
     async addOffice(newOffice) {
@@ -107,13 +117,16 @@ class AddNewOfficeContainer extends React.Component {
 
     render() {
         return (
-            <AddNewOffice
-                state={this.state}
-                hideOffice={this.props.hideOffice}
-                addNewOffice={this.addNewOffice.bind(this)}
-                handleInput={this.handleInput.bind(this)}
-                handleSelectInput={this.handleSelectInput.bind(this)}
-            />
+            <>
+                <AddNewOffice
+                    state={this.state}
+                    hideOffice={this.props.hideOffice}
+                    addNewOffice={this.addNewOffice.bind(this)}
+                    handleInput={this.handleInput.bind(this)}
+                    handleSelectInput={this.handleSelectInput.bind(this)}
+                />
+                <CustomLoader visible={this.state.isLoaderVisible} />
+            </>
         )
     }
 }

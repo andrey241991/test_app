@@ -39,6 +39,7 @@
     }
 }
 
+
 .offices-container {
     padding: 38px 51px 0 60px;
 }
@@ -50,4 +51,34 @@
 
 .office--hidden {
     display: none;
+}
+
+
+.offices-page-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: solid 1px #eaeaea;
+    margin-top: 40.5px;
+    padding-top: 39.5px;
+    padding-bottom: 39.5px;
+
+    .offices-page-footer__container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .container__img {
+        padding-left: 71px;
+        padding-right: 5px;
+    }
+
+    .skip__btn {
+        padding-right: 32px;
+    }
+
+    .btn__container{
+        padding-right:32px;
+    }
 }

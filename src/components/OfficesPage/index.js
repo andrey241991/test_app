@@ -18,7 +18,7 @@ class OfficesPage extends React.Component {
         };
     }
 
-    showAddNewOffice = () => {this.setState({ isAddNewOfficeVisible: true })}
+    showAddNewOffice = () => { this.setState({ isAddNewOfficeVisible: true }) }
     hideAddNewOffice = () => {
         console.log('hideAddNewOffice');
         this.setState({ isAddNewOfficeVisible: false })
@@ -86,6 +86,17 @@ class OfficesPage extends React.Component {
                         />
                     </div>
                     <div className='offices-page-footer'>
+                        <div className='offices-page-footer__container'>
+                            <Button theme='button__back-theme'>Back</Button>
+                            <div>
+                                <img className='container__img' src="images/plus.png" alt='sidebar logo' />
+                                <span>Provide additional comments</span>
+                            </div>
+                        </div>
+                        <div className='offices-page-footer__container'>
+                            <div className='btn__container'><Button theme='button__back-theme'>Skip this step</Button></div>
+                            <Button theme='button button__edit-theme'>Continue</Button>
+                        </div>
                     </div>
                 </div>
             </section>

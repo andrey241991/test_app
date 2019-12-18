@@ -101,8 +101,7 @@ const AddNewOffice =
             >Primary HQ</Input>
           </div>
           <div className='buttons-container'>
-            {}
-            <Button theme='button__remove-theme' onClickCallBack={hideOffice}>Cancel</Button>
+            <Button theme='button__back-theme' onClickCallBack={hideOffice}>Cancel</Button>
             <Button theme='button__edit-theme' onClickCallBack={addNewOffice}>Save</Button>
           </div>
         </div>

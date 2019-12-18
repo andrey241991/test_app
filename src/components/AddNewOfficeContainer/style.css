@@ -32,3 +32,8 @@
   color: #ffffff;
   padding: 5px 16px;
 }
+
+.aria-busy{
+  position: absolute;
+  right: 50%;
+}
